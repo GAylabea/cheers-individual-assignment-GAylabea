@@ -12,13 +12,20 @@ namespace Cheers
             // variables section
             String prompt = "> ";
             String cheer_prefix = "Give me a";
+            String requires_an = "aeiolnfshrmx";
 
             Console.WriteLine("What's your name?");
             Console.Write(prompt);
-            String user_name = Console.ReadLine(); //read from terminal to save a variable
-            
+            String user_name = Console.ReadLine().ToLower(); //read from terminal to save a variable
+
             for(int i = 0; i < user_name.Length; i++) {
-                Console.WriteLine(cheer_prefix + ".." + user_name[i]);    
+                if (requires_an.IndexOf(user_name[i]) > -1) {
+                    //Then it's in the requires_an array!
+                    Console.WriteLine(cheer_prefix + "n" + ".." + user_name[i]);
+                } else {
+                    //Does not require an "an"
+                    Console.WriteLine(cheer_prefix + ".." + user_name[i]);
+                }
             }
 
             // user_naem.ToUpper() is turing the user's name to uppercase.
